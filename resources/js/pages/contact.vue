@@ -41,6 +41,8 @@ data:function(){
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+ul{
+    list-style-type: none;
+}
 </style>
