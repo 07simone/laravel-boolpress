@@ -26,6 +26,10 @@ Route::middleware('auth')
     Route::resource('posts', 'PostController');
     Route::resource('categories', 'CategoryController');
 });
+Route::get('/contatti', 'Guest\ContattiController@contatti')->name('guest.contact');
+Route::post('/contatti', 'Guest\ContattiController@contattiSend')->name('guest.storeContact');
+Route::get('/thanks', 'Guest\ContattiController@thanks')->name('guest.thanks');
+
 
 Route::get('/{any}', 'Guest\HomeController@index')->where('any','.*');
 
