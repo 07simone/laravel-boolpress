@@ -7,7 +7,7 @@
             <h1>
                 Crea un nuovo post
             </h1>
-            <form action="{{ route('admin.posts.store') }}" method="POST">
+            <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <label for="author">Autore</label>
@@ -37,7 +37,7 @@
                 @enderror
                 <br>
                 <label for="content">Immagine</label>
-                <input type="text" name="img" id="img">
+                <input type="file" name="img" id="img">
                 @error('name')
                     <div class="alert">
                         {{$message}}

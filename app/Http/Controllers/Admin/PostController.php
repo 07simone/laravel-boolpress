@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -43,7 +44,7 @@ class PostController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $newPost = new Post();
-        $newPost->img = $data['img'];
+        $newPost->img = Storage::put('uploads',$data['img']);
         $newPost->Titolo = $data['Titolo'];
         $newPost->Autore = $data['Autore'];
         $newPost->Descrizione = $data['Descrizione'];
