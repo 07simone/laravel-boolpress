@@ -1,7 +1,7 @@
 <template>
 <div class="container pt-5">
     <div class="row">
-            <Post v-for="(post,index) in posts" :key="index" :post="post"/>
+        <Post v-for="(post,index) in posts" :key="index" :post="post"/>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item" v-if= "pagination.paginaCorrente > 1" @click="getPosts(pagination.paginaCorrente -1)">

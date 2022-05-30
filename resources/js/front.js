@@ -14,6 +14,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Posts from './pages/Posts';
 import NotFound from './pages/NotFound';
+import SinglePost from './pages/SinglePost';
+
 
 
 const router = new VueRouter({
@@ -43,6 +45,11 @@ const router = new VueRouter({
             path: '/not-found',
             name: 'not-found',
             component: NotFound
+        },
+        {
+            path: '/posts/:id',
+            name: 'single-post',
+            component: SinglePost
         },
 
     ]

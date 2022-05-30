@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -26,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -37,6 +40,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        $newPost = new Post();
+        $newPost->img = $data['img'];
+        $newPost->Titolo = $data['Titolo'];
+        $newPost->Autore = $data['Autore'];
+        $newPost->Descrizione = $data['Descrizione'];
+        $newPost->Data = $data['Data'];
+        $newPost->save();
+
+        $newPost->categories()->attach($data['category']);
+
+        return redirect()->route('admin.posts.show',$newPost);
 
     }
 
@@ -57,9 +73,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post )
     {
-        //
+        $categories= Category::all();
+        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -69,9 +86,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        $post->img = $data['img'];
+        $post->Titolo = $data['Titolo'];
+        $post->Autore = $data['Autore'];
+        $post->Descrizione = $data['Descrizione'];
+        $post->Data = $data['Data'];
+        $post->categories()->sync($data['category']);
+        $post->save();
+
+        return redirect()->route('admin.posts.index', $post->id )->with('message', 'Post modificato con successo');
     }
 
     /**
@@ -80,8 +106,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('message', 'Post eliminato') ;
     }
 }
