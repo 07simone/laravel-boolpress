@@ -17,7 +17,6 @@ export default{
         Header,
         Main,
     },
-    computed
     }
 
 </script>

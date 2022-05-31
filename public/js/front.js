@@ -2276,8 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  computed: computed
+  }
 });
 
 /***/ }),
