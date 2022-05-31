@@ -7,13 +7,14 @@
     <title>Email</title>
 </head>
 <body>
+
     <h1>{{$nome}} ti ha contattato</h1>
     <h3>
         Puoi rispondermi alla seguente email: {{$email}}
     </h3>
     <p>
         Questo è cio che ha scritto:
-        {{ $messaggio }}
+        {{ $guestMessage }}
     </p>
 </body>
 </html>

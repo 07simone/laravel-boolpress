@@ -2218,6 +2218,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
@@ -2230,7 +2238,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('http://localhost:8000/api/posts/' + this.$route.params.id).then(function (risultato) {
-        _this.singlePost = risultato.data.data;
+        _this.singlePost = risultato.data.results;
       });
     }
   },
@@ -2268,7 +2276,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }
+  },
+  computed: computed
 });
 
 /***/ }),
@@ -3825,18 +3834,32 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container pt-5" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "card m-1" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: { src: _vm.post.img, alt: "..." },
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(_vm._s(_vm.post.Titolo)),
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(_vm._s(_vm.post.Autore)),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.post.Descrizione)),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container pt-5" }, [
-      _c("div", { staticClass: "row" }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

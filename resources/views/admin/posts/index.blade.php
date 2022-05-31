@@ -58,7 +58,7 @@
                     </td>
                     <td class="d-flex">
                         <a href="{{ route("admin.posts.edit", $post) }}" class="btn btn-success" >Edit</a>
-                        <form action="{{route('admin.posts.destroy', $post)}}" method="POST" class="post-form-destroyer" post-title="{{$post->title}}">
+                        <form action="{{route("admin.posts.destroy", $post)}}" method="POST" class="post-form-destroyer" post-title="{{$post->title}}">
                             @csrf
                             @method('DELETE')
 

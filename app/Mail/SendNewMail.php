@@ -12,18 +12,18 @@ class SendNewMail extends Mailable
     use Queueable, SerializesModels;
     protected $nome;
     protected $email;
-    protected $messaggio;
+    protected $guestMessage;
     /**
-     * Create a new message instance.
+     * Create a new guestMessage instance.
      *
      * @return void
      */
-    public function __construct($nome, $email, $messaggio)
+    public function __construct($nome, $email, $guestMessage)
 
     {
         $this->nome = $nome;
         $this->email = $email;
-        $this->messaggio = $messaggio;
+        $this->guestMessage = $guestMessage;
     }
 
     /**
@@ -33,6 +33,6 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->replyTo($this->email)->view('email.body',["nome"=>$this->nome, "email"=>$this->email, "messaggio"=>$this->messaggio]); /* $this->replyTo($this->email) = a quale email devo andare a rispondere quando faccio rispondi */
+        return $this->replyTo($this->email)->view('email.body',["nome"=>$this->nome, "email"=>$this->email, "guestMessage"=>$this->guestMessage]); /* $this->replyTo($this->email) = a quale email devo andare a rispondere quando faccio rispondi */
     }
 }
