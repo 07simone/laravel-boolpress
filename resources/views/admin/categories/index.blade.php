@@ -13,7 +13,7 @@
                 @endif
         </div>
         <div class="col-12">
-            <a href="{{route('admin.categories.create')}}">nuovo post</a>
+            <a class="btn btn-success" href="{{route('admin.categories.create')}}">nuovo post</a>
         </div>
             @forelse ( $categories as $category)
                 <div class="col-4 mb-3">

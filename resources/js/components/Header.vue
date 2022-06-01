@@ -6,13 +6,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                     <li class="nav-item" v-for="(element,index) in navigation" :key="index">
                         <router-link :to="{ name: element.route, params: { userId: 123 }}">{{element.name}}</router-link>
+
                     </li>
-                </ul>
-                <ul>
                     <li>
                         <a href="/admin/posts"> ABOUT</a>
                     </li>
                 </ul>
+
+
+
             </div>
         </div>
 </nav>

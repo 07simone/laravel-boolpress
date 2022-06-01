@@ -63,6 +63,11 @@
                                     Posts
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('guest.contact')}}" role="button"  v-pre>
+                                    Contatti
+                                    </a>
+                                </li>
 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

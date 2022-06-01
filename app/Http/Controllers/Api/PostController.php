@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    /* public function search($titleToSearch){
+        $posts = Post::where('title', 'LIKE', "%$titleToSearch%")->get();
+        return response()->json($posts);
+    } */
     /**
      * Display a listing of the resource.
      *

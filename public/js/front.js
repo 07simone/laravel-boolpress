@@ -1930,6 +1930,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   data: function data() {
@@ -2226,24 +2228,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePost",
   data: function data() {
     return {
-      singlePost: []
+      post: []
     };
   },
   methods: {
     getPost: function getPost() {
       var _this = this;
 
-      axios.get('http://localhost:8000/api/posts/' + this.$route.params.id).then(function (risultato) {
-        _this.singlePost = risultato.data.results;
+      axios.get("http://localhost:8000/api/posts/" + this.$route.params.id).then(function (risultato) {
+        _this.post = risultato.data;
+        console.log(_this.post);
       });
     }
   },
   created: function created() {
-    this.getPost();
+    this.getPost(this.$route.params.postId);
+    console.log(this.$route.params.postId);
   }
 });
 
@@ -3471,28 +3483,33 @@ var render = function () {
             _c(
               "ul",
               { staticClass: "navbar-nav me-auto mb-2 mb-lg-0" },
-              _vm._l(_vm.navigation, function (element, index) {
-                return _c(
-                  "li",
-                  { key: index, staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: { name: element.route, params: { userId: 123 } },
+              [
+                _vm._l(_vm.navigation, function (element, index) {
+                  return _c(
+                    "li",
+                    { key: index, staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: element.route,
+                              params: { userId: 123 },
+                            },
+                          },
                         },
-                      },
-                      [_vm._v(_vm._s(element.name))]
-                    ),
-                  ],
-                  1
-                )
-              }),
-              0
+                        [_vm._v(_vm._s(element.name))]
+                      ),
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _vm._m(0),
+              ],
+              2
             ),
-            _vm._v(" "),
-            _vm._m(0),
           ]
         ),
       ]),
@@ -3504,10 +3521,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("a", { attrs: { href: "/admin/posts" } }, [_vm._v(" ABOUT")]),
-      ]),
+    return _c("li", [
+      _c("a", { attrs: { href: "/admin/posts" } }, [_vm._v(" ABOUT")]),
     ])
   },
 ]
@@ -3833,27 +3848,46 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container pt-5" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "card m-1" }, [
-        _c("img", {
-          staticClass: "card-img-top",
-          attrs: { src: _vm.post.img, alt: "..." },
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("h5", { staticClass: "card-title" }, [
-            _vm._v(_vm._s(_vm.post.Titolo)),
-          ]),
-          _vm._v(" "),
-          _c("h5", { staticClass: "card-title" }, [
-            _vm._v(_vm._s(_vm.post.Autore)),
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [
-            _vm._v(_vm._s(_vm.post.Descrizione)),
-          ]),
-        ]),
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "div",
+          {
+            staticClass: "card mt-5 w-100 p-3",
+            staticStyle: { "max-width": "540px" },
+          },
+          [
+            _c("div", { staticClass: "row g-0" }, [
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("img", {
+                  staticClass: "img-fluid rounded-start",
+                  attrs: { src: _vm.post.img, alt: "..." },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(_vm.post.Titolo)),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(_vm.post.Autore)),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(_vm.post.Descrizione)),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(_vm.post.Data)),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]
+        ),
       ]),
     ]),
   ])
@@ -19891,14 +19925,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./resources/js/pages/SinglePost.vue ***!
   \*******************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SinglePost_vue_vue_type_template_id_67cb3b51___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SinglePost.vue?vue&type=template&id=67cb3b51& */ "./resources/js/pages/SinglePost.vue?vue&type=template&id=67cb3b51&");
 /* harmony import */ var _SinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SinglePost.vue?vue&type=script&lang=js& */ "./resources/js/pages/SinglePost.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -19928,7 +19963,7 @@ component.options.__file = "resources/js/pages/SinglePost.vue"
 /*!********************************************************************!*\
   !*** ./resources/js/pages/SinglePost.vue?vue&type=script&lang=js& ***!
   \********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -43,7 +43,9 @@ export default{
                 const{current_page, last_page} = risultato.data;
                 this.pagination = {paginaCorrente:current_page, ultimaPagina:last_page};
             })
-        }
+        },
+
+
     },
     created(){
         this.getPosts();
