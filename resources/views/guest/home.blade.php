@@ -13,26 +13,26 @@
 
     </head>
     <body>
-<div id="root">
-    <div class="flex-center position-ref full-height">
-    {{--  @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ route('admin.home') }}">Home</a>
-                    <a href="{{ route('admin.posts.index') }}">posts</a>
-                    <a href="{{ route('admin.categories.index') }}">categories</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
+        <div id="root">
+            <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a href="{{ route('admin.home') }}">Home</a>
+                            <a href="{{ route('admin.posts.index') }}">posts</a>
+                            <a href="{{ route('admin.categories.index') }}">categories</a>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
-        @endif
-    </div> --}}
 
-</div>
+        </div>
         <script src="{{asset('js/front.js')}}"></script>
     </body>
 </html>

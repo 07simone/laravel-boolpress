@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use App\Http\Controllers\Controller;
-use App\Model\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::inRandomOrder()->paginate(6);
-        return response()->json($posts);
+        $categories = Category::inRandomOrder()->paginate(5);
+        return response()->json($categories);
     }
 
     /**
@@ -39,8 +39,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        return response()->json($post);
+        $categoria = Category::findOrFail($id);
+        return response()->json($categoria);
     }
 
     /**
@@ -63,7 +63,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
-        return response('',204);
+        //
     }
 }

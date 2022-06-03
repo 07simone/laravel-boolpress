@@ -25,6 +25,7 @@
 
 <script>
 export default {
+
 name:"SinglePost",
 data:function(){
     return{
@@ -43,8 +44,8 @@ methods:{
 
     created(){
 
-        this.getPost(this.$route.params.postId);
-        console.log(this.$route.params.postId);
+        this.getPost(this.$route.params.id);
+        console.log(this.$route.params.id);
     }
 
 }

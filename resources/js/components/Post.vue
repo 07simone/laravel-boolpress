@@ -4,8 +4,9 @@
                 <img :src="post.img" class="card-img-top" alt="...">
                 <div class="card-body">
                     <router-link :to="{name: 'single-post', params: { id: post.id }}">
-                        <h5 class="card-title">{{post.Titolo}}</h5>
+                        <button type="button" class="btn btn-primary">Dettagli</button>
                     </router-link>
+                    <h5 class="card-title">{{post.Titolo}}</h5>
                     <h5 class="card-title">{{post.Autore}}</h5>
                     <p class="card-text">{{post.Descrizione}}</p>
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
@@ -31,5 +32,7 @@ export default {
 </script>
 
 <style>
-
+.card{
+    width: 280px;
+}
 </style>

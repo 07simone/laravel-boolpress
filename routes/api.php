@@ -20,4 +20,7 @@ Route::middleware('auth:api')->get('/admin', function (Request $request) {
 
 Route::get('/posts', 'Api\PostController@index');
 Route::get('/posts/{id}', 'Api\PostController@show');
+Route::get('/categories', 'Api\CategoryController@index');
+Route::get('/categories{id}', 'Api\CategoryController@show');
 Route::delete('/posts/{id}', 'Api\PostController@destroy');
+

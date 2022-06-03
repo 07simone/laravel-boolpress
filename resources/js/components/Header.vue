@@ -6,18 +6,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                     <li class="nav-item" v-for="(element,index) in navigation" :key="index">
                         <router-link :to="{ name: element.route, params: { userId: 123 }}">{{element.name}}</router-link>
-
                     </li>
-                    <li>
+                    <li >
                         <a href="/admin/posts"> ABOUT</a>
                     </li>
                 </ul>
 
-
-
             </div>
         </div>
-</nav>
+    </nav>
 
 </div>
 </template>
@@ -37,8 +34,8 @@ data:function(){
                 route:"about"
             },
             {
-                name:"Contact",
-                route:"contact"
+                name:"Contacts",
+                route:"contacts"
             },
             {
                 name:"Posts",
@@ -47,6 +44,10 @@ data:function(){
             {
                 name:"Not-found",
                 route:"not-found"
+            },
+            {
+                name:"Categoria",
+                route:"categoria"
             }
         ]
     }
@@ -65,5 +66,10 @@ data:function(){
             color:white;
             text-decoration:none;
 
+    }
+
+    .about{
+        display: flex;
+        justify-content: space-between
     }
 </style>

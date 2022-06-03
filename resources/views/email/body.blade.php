@@ -7,14 +7,20 @@
     <title>Email</title>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{$nome}} ti ha contattato</h1>
+            <h3>
+                Puoi rispondermi alla seguente email: {{$email}}
+            </h3>
+            <p>
+                Questo è cio che ha scritto:
+                {{ $guestMessage }}
+            </p>
+        </div>
+    </div>
+</div>
 
-    <h1>{{$nome}} ti ha contattato</h1>
-    <h3>
-        Puoi rispondermi alla seguente email: {{$email}}
-    </h3>
-    <p>
-        Questo è cio che ha scritto:
-        {{ $guestMessage }}
-    </p>
 </body>
 </html>
