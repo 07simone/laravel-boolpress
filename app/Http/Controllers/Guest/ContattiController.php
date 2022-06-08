@@ -15,7 +15,7 @@ class ContattiController extends Controller
         return view('guest.contact');
     }
 
-    public function contattiSend( Request $request)
+    public function contattiSend(Request $request)
     {
         $data = $request->all();
         Mail::to("senioradmin@gmail.com")->send(new SendNewMail($data['name'], $data['email'], $data['message']));   /* ::to $request->email è l'email dove mi devono contattare */

@@ -41,10 +41,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->all();
+        $request->validate(
+            [
+                'Titolo' => 'required|min:5|max:255',
+                'Autore' => 'required|min:5|max:255',
+                'Descrizione' => 'required|min:5|max:255',
+                'img' => 'required|min:5|max:255',
+                'data' => 'required|min:5|max:255',
+
+            ],
+            [
+                'required' => 'questo campo è obbligatorio',            // messaggio di errore
+            ]
+        );
         $data['user_id'] = Auth::user()->id;
         $newPost = new Post();
-        $newPost->img = Storage::put('uploads',$data['img']);
+        $newPost->img = Storage::put('uploads', $data['img']);
         $newPost->Titolo = $data['Titolo'];
         $newPost->Autore = $data['Autore'];
         $newPost->Descrizione = $data['Descrizione'];
@@ -53,8 +67,7 @@ class PostController extends Controller
 
         $newPost->categories()->attach($data['category']);
 
-        return redirect()->route('admin.posts.show',$newPost);
-
+        return redirect()->route('admin.posts.show', $newPost)->with('message', 'Post aggiunto con successo');
     }
 
     /**
@@ -74,9 +87,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post )
+    public function edit(Post $post)
     {
-        $categories= Category::all();
+        $categories = Category::all();
         return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
     }
 
@@ -98,7 +111,7 @@ class PostController extends Controller
         $post->categories()->sync($data['category']);
         $post->save();
 
-        return redirect()->route('admin.posts.index', $post->id )->with('message', 'Post modificato con successo');
+        return redirect()->route('admin.posts.show', $post->id)->with('message', 'Post modificato con successo');
     }
 
     /**
@@ -110,6 +123,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('message', 'Post eliminato') ;
+        return redirect()->route('admin.posts.index')->with('deleted-message', 'Post eliminato');
     }
 }

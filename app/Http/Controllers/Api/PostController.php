@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
+    /**
+     * searc a single post by title
+     */
+    public function search($titleToSearch)
+    {
+        $posts = Post::where('Titolo', 'LIKE', '%' . $titleToSearch . '%')->get();      // fai una riocerca alla colonna Titolo e restituisci tutti i risultati
+        return response()->json($posts);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -64,6 +71,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-        return response('',204);
+        return response('', 204);
     }
 }
